@@ -17,7 +17,6 @@
 #include <driverlib/i2c.h>
 #include "seg7.h"
 #include "launchpad.h"
-
 /*
  * Global variables: In embedded system programming, careful use of global variable is acceptable
  * and usually necessary.
@@ -31,6 +30,8 @@ Seg7Display seg7 = { { 3, 2, 1, 0 }, false }; // initial state is "3210" with co
  *
  * REVISE THE FUNCTION TO MAKE IT RUN A CLOCK
  */
+
+uint32_t d1 = 0, d2 = 0, d3 = 0, d4 = 0, colon = 0;
 void ClockUpdate(uint32_t time)
 {
     // Update the colon_on state, from true to false, or false to true
@@ -39,11 +40,17 @@ void ClockUpdate(uint32_t time)
     else
         seg7.colon_on = true;
 
+//    code[0] = seg7_coding_table[d1];
+//    code[1] = seg7_coding_table[d2];
+//    code[2] = seg7_coding_table[d3];
+//    code[3] = seg7_coding_table[d4];
+
+
     // Update the 7-segment
     Seg7Update(&seg7);
 
     // Schedule a callback after 0.5 seconds
-    ScheduleCallback(ClockUpdate, time + 500);
+    ScheduleCallback(ClockUpdate, time + 1000);
 }
 
 /*

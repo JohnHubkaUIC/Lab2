@@ -23,6 +23,12 @@ static uint8_t seg7_coding_table[10] = {
         0b00000110,         // digit 1
         0b01011011,         // digit 2
         0b01001111,         // digit 3
+        0b01100110,         // digit 4
+        0b01101101,         // digit 5
+        0b01111101,         // digit 6
+        0b00000111,         // digit 7
+        0b01111111,         // digit 8
+        0b01101111          // digit 9
         // YOUR CODE
 };
 
